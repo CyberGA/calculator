@@ -38,11 +38,11 @@ class Values extends ChangeNotifier {
 
       notifyListeners();
 
-      calculate(enteredValue);
+      calculate();
     }
   }
 
-  void calculate(String val) {
+  void calculate() {
     try {
       Parser p = Parser();
       Expression exp = p.parse(calcValue);
@@ -57,14 +57,21 @@ class Values extends ChangeNotifier {
   void reset() {
     _enteredValue = "0";
     _calcValue = "0";
-    _result = 0;
+    _setResult(0);
+    notifyListeners();
+  }
+
+  void equalsTo() {
+    _enteredValue = result.toString();
+    _calcValue = result.toString();
+    _setResult(0);
     notifyListeners();
   }
 
   void clearLast() {
     _enteredValue = _enteredValue.substring(0, _enteredValue.length - 1);
     _calcValue = _calcValue.substring(0, _calcValue.length - 1);
-    calculate(enteredValue);
+    calculate();
 
     if (_enteredValue == "") {
       _enteredValue = "0";

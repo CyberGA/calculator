@@ -30,11 +30,14 @@ class CustomButton extends StatelessWidget {
                 MaterialStateProperty.all<Color>(Colors.transparent),
           ),
           onPressed: () {
-            if (this.text != "C") {
+            if (this.text != "C" && this.text != "=") {
               calcValues.setEnteredValue(this.text);
             }
             if (this.text == "C") {
               calcValues.reset();
+            }
+            if (this.text == "=") {
+              calcValues.equalsTo();
             }
           },
           child: Text(

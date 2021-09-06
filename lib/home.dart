@@ -20,7 +20,7 @@ class Calculator extends StatelessWidget {
               Align(
                   alignment: Alignment.centerRight,
                   child: Text(
-                    calcValues.enteredValue.toString(),
+                    calcValues.enteredValue,
                     style: TextStyle(color: cMainW, fontSize: 32),
                   )),
               SizedBox(
@@ -28,8 +28,11 @@ class Calculator extends StatelessWidget {
               ),
               Align(
                 alignment: Alignment.centerRight,
-                child: Text(calcValues.result == 0 ? "" :  '= ${calcValues.result.toString()}',
-                  style: TextStyle(color: cGreen, fontSize: 60),
+                child: Text(
+                  calcValues.result == 0
+                      ? ""
+                      : '= ${calcValues.result.toString()}',
+                  style: TextStyle(color: cGreen, fontSize: 20),
                 ),
               ),
               Spacer(),
@@ -63,7 +66,7 @@ class Calculator extends StatelessWidget {
                         IconButton(
                           onPressed: () => calcValues.clearLast(),
                           icon: Icon(
-                            Icons.close_sharp,
+                            Icons.backspace_outlined,
                             color: cMainWLight,
                           ),
                         )
